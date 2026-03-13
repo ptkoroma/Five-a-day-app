@@ -1,45 +1,37 @@
-# Coffee Collection App
+# ☕ My Business Product Catalog
 
-A modern e-commerce web application for premium coffee products, including coffee beans, brewing equipment, and accessories.
+A professional, fully responsive web application built to showcase products, engage customers, and provide a seamless shopping experience.
 
-## Features
+## ✨ Key Features
 
-- **Product Catalog**: Browse coffee beans, equipment, and accessories
-- **Search & Filter**: Find products by name and category
-- **Price Sorting**: Sort by price (low to high, high to low)
-- **Shopping Cart**: Add items and track cart count with local storage
-- **Product Details**: View detailed product information in modal popups
-- **Contact Form**: Get in touch with inquiries
-- **Responsive Design**: Works on desktop and mobile devices
+* **🔍 Advanced Filtering**: Real-time search bar, category filtering, and price sorting (Low to High / High to Low).
+* **🌍 Global Ready**: Built-in currency switcher supporting USD ($), EUR (€), and GBP (£) with automatic conversion.
+* **🌙 Dark Mode**: User-selectable themes with persistence via Local Storage.
+* **🛒 Shopping Cart**: Persistent cart counter that remembers your items even after refreshing the page.
+* **📍 Live Status**: Real-time "Open/Closed" status indicator based on actual business hours.
+* **📧 Lead Generation**: Intelligent newsletter signup popup with a 10-second delay trigger.
+* **💬 Social Proof**: Integrated star ratings and a customer review section within product modals.
+* **🔗 Deep Linking**: "Share" functionality that generates unique URLs to automatically open specific products for friends.
 
-## Product Categories
+## 🛠️ Built With
 
-- **Beans**: Premium organic coffee beans
-- **Equipment**: French presses, burr grinders, and brewing tools
-- **Accessories**: Ceramic mugs and coffee accessories
+* **HTML5**: Semantic structure for accessibility and SEO.
+* **CSS3**: Custom properties (variables), Flexbox, and Grid for a modern, responsive design.
+* **JavaScript (ES6+)**: Core logic, DOM manipulation, and Local Storage integration.
 
-## Technologies Used
+## 🚀 How to Use
 
-- HTML5
-- CSS3 (Grid layout, Flexbox)
-- Vanilla JavaScript
-- Local Storage for cart persistence
-- Responsive design principles
+1.  **Clone the Repository**: 
+    `git clone https://github.com/yourusername/your-repository-name.git`
+2.  **Open the App**: 
+    Simply double-click `index.html` to view the app in your browser.
+3.  **Deploy**: 
+    Host it for free using [GitHub Pages](https://pages.github.com/).
 
-## Getting Started
+## 📁 Project Structure
 
-1. Open `index.html` in your web browser
-2. Browse the coffee product collection
-3. Use search and filter options to find specific items
-4. Add products to your cart
-5. Contact us through the contact form for inquiries
-
-## Project Structure
-
-```
-├── index.html          # Main application file
-├── style.css           # Styles and responsive layout
-├── script.js           # JavaScript functionality
-├── images/             # Product images directory
-└── README.md           # This file
-```
+```text
+├── index.html      # Main application structure
+├── style.css       # Styling and theme variables
+├── script.js       # Core application logic
+└── images/         # Product image assets

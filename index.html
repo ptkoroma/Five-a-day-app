@@ -7,7 +7,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="business-status" class="status-bar">
+    <span id="status-dot"></span>
+    <span id="status-text">Checking hours...</span>
+</div>
+
     <header>
+                <div class="top-bar">
+        <button id="theme-toggle">🌙 Dark Mode</button>
+        <div class="cart-status">
+            <span>🛒 Cart: <span id="cart-count">0</span> items</span>
+        </div>
         <div class="cart-status">
             <span>🛒 Cart: <span id="cart-count">0</span> items</span>
         </div>
@@ -15,6 +25,11 @@
         
         <div class="search-container">
             <input type="text" id="search-bar" placeholder="Search products...">
+            <select id="currency-picker">
+                <option value="USD">USD ($)</option>
+                <option value="EUR">EUR (€)</option>
+                <option value="GBP">GBP (£)</option>
+             </select>
             
             <select id="category-filter">
                 <option value="all">All Categories</option>
@@ -31,6 +46,8 @@
 
             <button id="reset-btn">Reset</button>
         </div>
+    </div>
+
     </header>
 
     <main id="product-grid" class="grid-container"></main>
@@ -42,7 +59,42 @@
         </div>
     </div>
 
+    <section id="contact-section">
+    <h2>Contact Us</h2>
+    <form
+  action="https://formspree.io/f/mjgaowzw"
+  class="fs-form"
+  target="_top"
+  method="POST"
+>
+  <div class="fs-field">
+    <label class="fs-label" for="email">Email</label>
+    <input class="fs-input" id="email" name="email" required />
+  </div>
+  <div class="fs-field">
+    <label class="fs-label" for="message">Message</label>
+    <textarea class="fs-textarea" id="message" name="message"></textarea>
+  </div>
+  <div class="fs-button-group">
+    <button class="fs-button" type="submit">Submit</button>
+  </div>
+</form>
+    </section>
+
+<div id="newsletter-modal" class="modal">
+    <div class="modal-content newsletter-box">
+        <span class="close-newsletter">&times;</span>
+        <h2>Join Our Newsletter!</h2>
+        <p>Get 10% off your first order and stay updated on new arrivals.</p>
+        <form id="newsletter-form">
+            <input type="email" id="newsletter-email" placeholder="Enter your email" required>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</div>
+
 
     <script src="script.js"></script>
+
 </body>
 </html>
