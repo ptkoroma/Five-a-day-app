@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Business App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="cart-status">
+            <span>🛒 Cart: <span id="cart-count">0</span> items</span>
+        </div>
+        <h1>Our Product Collection</h1>
+        
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Search products...">
+            
+            <select id="category-filter">
+                <option value="all">All Categories</option>
+                <option value="beans">Beans</option>
+                <option value="equipment">Equipment</option>
+                <option value="accessories">Accessories</option>
+            </select>
 
+            <select id="price-sort">
+                <option value="default">Sort by: Default</option>
+                <option value="low-high">Price: Low to High</option>
+                <option value="high-low">Price: High to Low</option>
+            </select>
+
+            <button id="reset-btn">Reset</button>
+        </div>
+    </header>
+
+    <main id="product-grid" class="grid-container"></main>
+
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <section id="contact-section">
+        <h2>Contact Us</h2>
+        <form id="contact-form">
+            <input type="text" id="user-name" placeholder="Your Name" required>
+            <input type="email" id="user-email" placeholder="Your Email" required>
+            <textarea id="user-message" placeholder="How can we help?" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        <div id="form-feedback" class="hidden">Thank you! Your message has been sent.</div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
