@@ -1,9 +1,44 @@
 const products = [
-    { name: "Soccer Jersey", displayPrice: "$15.00", price: 15.00, category: "t-shirt", rating: 5, desc: "Premium organic roast.", image: "https://image2url.com/r2/default/images/1773427906786-83745768-1374-4571-bcb7-61557308e548.jpeg?w=500" },
-    { name: "T-Shirt", displayPrice: "$25.00", price: 25.00, category: "hoody", rating: 5, desc: "Glass and steel brewer.", image: "https://image2url.com/r2/default/images/1773427997465-fa48ef40-44fa-4c59-95e7-670ab3f057dc.jpeg?w=500", reviews: [] },
-    { name: "Hoody", displayPrice: "$12.00", price: 12.00, category: "soccer-jersey", onSale: true, rating: 5, desc: "Hand-crafted mug.", image: "https://image2url.com/r2/default/images/1773428096240-e914b556-a799-46d5-bb3f-66e86c29bd9b.jpeg?w=500", reviews: [] },
-    { name: "T-Shirt", displayPrice: "$45.00", price: 45.00, category: "hoody",rating: 5, desc: "Adjustable burr settings.", image: "https://image2url.com/r2/default/images/1773428188404-bc3ccc00-a6f0-4f4f-8d58-334c95bdc2c6.jpeg?w=500", reviews: [] }
-    
+    { 
+        name: "Sierra T-Shirt Dress", 
+        price: 45.00, 
+        category: "women", 
+        rating: 5, 
+        onSale: true, 
+        desc: "Sporty bodycon mini-dress featuring hand-painted brushstrokes and gold-leaf typography.", 
+        image: "https://i.ibb.co/YTy0wcQW/Whats-App-Image-2026-03-11-at-04-42-19-3.jpg?v=0",
+        reviews: ["Fits perfectly and the colors are so vibrant!"] 
+    },
+    { 
+        name: "Emerald Heritage V-Neck", 
+        price: 35.00, 
+        category: "women", 
+        rating: 4, 
+        onSale: false, 
+        desc: "Lightweight athletic top with an emerald swirl pattern and gold lion emblem.", 
+        image: "https://i.ibb.co/C50x2d9W/Whats-App-Image-2026-03-11-at-04-42-17-4.jpg?v=0",
+        reviews: [] 
+    },
+    { 
+        name: "Urban Artisan Polo", 
+        price: 40.00, 
+        category: "men", 
+        rating: 5, 
+        onSale: false, 
+        desc: "Classic polo with abstract blue and green brushstrokes and a minimalist profile graphic.", 
+        image: "https://i.ibb.co/84t7jK2X/1773460548608-662068d9-01cf-4be3-996f-6f690807a474.jpg?v=0",
+        reviews: ["Very unique design, get compliments every time."] 
+    },
+    { 
+        name: "Patriot Azure Set", 
+        price: 65.00, 
+        category: "men", 
+        rating: 5, 
+        onSale: true, 
+        desc: "Premium cobalt blue hoodie and short set featuring a gold-accented map silhouette.", 
+        image: "https://i.ibb.co/gMwzSsFt/Whats-App-Image-2026-03-11-at-04-42-17-1.jpg?v=0",
+        reviews: ["Super comfortable material."] 
+    }
 ];
 
 let cartCount = parseInt(localStorage.getItem('myBusinessCartCount')) || 0;
@@ -328,7 +363,68 @@ contactForm.addEventListener('submit', function(event) {
     });
 });
 
+function getSizeGuide(category) {
+    // Basic sizing data for your brand
+    const sizes = [
+        { size: "S", chest: '34-36"', length: '27"' },
+        { size: "M", chest: '38-40"', length: '28"' },
+        { size: "L", chest: '42-44"', length: '29"' },
+        { size: "XL", chest: '46-48"', length: '30"' }
+    ];
 
+    let tableRows = sizes.map(s => `
+        <tr>
+            <td>${s.size}</td>
+            <td>${s.chest}</td>
+            <td>${s.length}</td>
+        </tr>
+    `).join('');
+
+    return `
+        <div class="size-guide">
+            <h4>📏 Size Guide (Inches)</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Size</th>
+                        <th>Chest</th>
+                        <th>Length</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${tableRows}
+                </tbody>
+            </table>
+        </div>
+    `;
+}
+
+// Update the openModal function to include the size guide
+function openModal(name) {
+    const p = products.find(prod => prod.name === name);
+    const reviewsHTML = p.reviews.map(rev => `<p class="review-item">💬 ${rev}</p>`).join('');
+    
+    // Get the size guide only if it's a clothing item
+    const sizeGuideHTML = (p.category === 'men' || p.category === 'women' || p.category === 'activewear') 
+        ? getSizeGuide(p.category) 
+        : "";
+
+    modalBody.innerHTML = `
+        <img src="${p.image}" style="width:100%; max-width:250px; border-radius:8px;">
+        <h2>${p.name}</h2>
+        <p>${p.desc}</p>
+        ${sizeGuideHTML}
+        <button id="share-btn" onclick="shareProduct('${p.name}')">🔗 Share Link</button>
+        <hr>
+        <h3>Reviews</h3>
+        <div id="reviews-list">${p.reviews.length > 0 ? reviewsHTML : '<p>No reviews yet.</p>'}</div>
+        <div class="add-review">
+            <input type="text" id="new-review" placeholder="Add a comment...">
+            <button onclick="submitReview('${p.name}')">Post</button>
+        </div>
+    `;
+    modal.style.display = "block";
+}
 
 // Run the check on every page load
 window.addEventListener('load', checkUrlForProduct);
